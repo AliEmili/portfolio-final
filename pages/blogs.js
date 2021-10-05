@@ -93,7 +93,7 @@ class Blogs extends React.Component {
                       </a>
                     </li>
                   </ul>
-                  <p className="copyright text-muted">Copyright &copy; Ali Emili 2018</p>
+                  <p className="copyright text-muted">Copyright &copy; Ali Emili 2021</p>
                 </div>
               </Row>
             </Container>
