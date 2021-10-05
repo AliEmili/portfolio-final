@@ -11,7 +11,7 @@ class Auth0 {
 
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      domain: 'eincode.eu.auth0.com',
+      domain: 'dev-aviqc2hx.us.auth0.com',
       clientID: CLIENT_ID,
       redirectUri: `${process.env.BASE_URL}/callback`,
       responseType: 'token id_token',
@@ -57,7 +57,7 @@ class Auth0 {
   }
 
   async getJWKS() {
-    const res = await axios.get('https://eincode.eu.auth0.com/.well-known/jwks.json');
+    const res = await axios.get('https://dev-aviqc2hx.us.auth0.com/.well-known/jwks.json');
     const jwks = res.data;
     return jwks;
   }
