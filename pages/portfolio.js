@@ -1,24 +1,20 @@
-import React from 'react';
-import BaseLayout from '../components/layouts/BaseLayout';
-import BasePage from '../components/BasePage';
-import { withRouter } from 'next/router'
-import axios from 'axios';
-
+import React from "react";
+import BaseLayout from "../components/layouts/BaseLayout";
+import BasePage from "../components/BasePage";
+import { withRouter } from "next/router";
+import { getPortfolioById } from "../actions";
+import moment from "moment";
 class Portfolio extends React.Component {
-
-  static async getInitialProps({query}) {
-    const portfolioId = query.id;
+  static async getInitialProps({ query }) {
     let portfolio = {};
 
     try {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${portfolioId}`);
-      portfolio = response.data;
-
-    } catch(err) {
-      console.error(err);
+      portfolio = await getPortfolioById(query.id);
+    } catch (error) {
+      console.error(error);
     }
 
-    return {portfolio};
+    return { portfolio };
   }
 
   render() {
@@ -27,12 +23,36 @@ class Portfolio extends React.Component {
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage>
-          <h1> {portfolio.title} </h1>
-          <p> BODY: {portfolio.body} </p>
-          <p> ID:  {portfolio.id} </p>
+          <p>
+            <b>Description: </b>
+            {portfolio.description}
+          </p>
+          <p>
+            <b>Company: </b>
+            {portfolio.company}
+          </p>
+          <p>
+            <b>Position: </b>
+            {portfolio.position}
+          </p>
+          <p>
+            <b>Location: </b>
+            {portfolio.location}
+          </p>
+          <p>
+            <b>Start Date: </b>
+            {moment(portfolio.startDate).format("MMMM YYYY")}
+          </p>
+          <p>
+            <b>End Date: </b>
+            {portfolio.endDate
+              ? moment(portfolio.endDate).format("MMMM YYYY")
+              : "Still Working Here"}
+          </p>
+          {JSON.stringify(portfolio.picturesUrl)}
         </BasePage>
       </BaseLayout>
-    )
+    );
   }
 }
 
