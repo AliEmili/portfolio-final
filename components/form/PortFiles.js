@@ -1,28 +1,24 @@
 import React from "react";
-import DatePicker from "react-datepicker";
 
 import { FormGroup, Label } from "reactstrap";
-
-import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment";
 
 export default class PortDate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateValue: moment(),
+      dataValue: [],
     };
   }
 
-  handleChange = (date) => {
+  handleChange = (event) => {
     const { setFieldValue, setFieldTouched } = this.props.form;
     const { name } = this.props.field;
 
     this.setState({
-      dateValue: date,
+      dataValue: event.target.files,
     });
 
-    setFieldValue(name, date, true);
+    setFieldValue(name, event.target.files, true);
     setFieldTouched(name, true, true);
   };
 
@@ -37,14 +33,12 @@ export default class PortDate extends React.Component {
       <FormGroup>
         <Label>{label}</Label>
         <div className="input-group">
-          <DatePicker
-            selected={this.state.dateValue}
+          <input
+            type="file"
+            name="picturesUrl"
+            accept="image/*"
+            multiple
             onChange={this.handleChange}
-            peekNextMounth
-            showMonthDropdown
-            showYearDropdown
-            maxDate={moment()}
-            dropdownMode="select"
           />
           {touched[field.name] && errors[field.name] && (
             <div className="error">{errors[field.name]}</div>

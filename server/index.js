@@ -37,8 +37,6 @@ const secretData = [
     description: "My secret passwords",
   },
 ];
-
-console.log("config", config.DB_URI);
 mongoose
   .connect(config.DB_URI, { useNewUrlParser: true })
   .then(() => console.log("Database Connected!"))

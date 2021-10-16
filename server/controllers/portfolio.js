@@ -27,19 +27,24 @@ exports.getPortfolioById = (req, res) => {
 };
 
 exports.savePortfolio = (req, res) => {
-  const portfolioData = req.body;
-  const userId = req.user && req.user.sub;
-  const portfolio = new Portfolio(portfolioData);
-  portfolio.userId = userId;
-  portfolio.picturesUrl = ["test1", "test2"];
+  console.log(req.files, req.body);
+  // const paths = req.files.map((file) => file.path);
+  // paths.forEach((path) => {
+  //   console.log("path: ", path);
+  // });
+  // const portfolioData = req.body;
+  // const userId = req.user && req.user.sub;
+  // const portfolio = new Portfolio(portfolioData);
+  // portfolio.userId = userId;
+  // portfolio.picturesUrl = ["test1", "test2"];
 
-  portfolio.save((err, createdPortfolio) => {
-    if (err) {
-      return res.status(422).send(err);
-    }
+  // portfolio.save((err, createdPortfolio) => {
+  //   if (err) {
+  //     return res.status(422).send(err);
+  //   }
 
-    return res.json(createdPortfolio);
-  });
+  //   return res.json(createdPortfolio);
+  // });
 };
 
 exports.updatePortfolio = (req, res) => {
