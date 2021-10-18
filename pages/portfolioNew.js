@@ -38,7 +38,6 @@ class PortfolioNew extends React.Component {
     for (let [key, value] of Object.entries(portfolioData)) {
       if (key === "picturesUrl") {
         for (let file of value) {
-          console.log(">file:", file);
           newFormData.append(key, file);
         }
       } else {

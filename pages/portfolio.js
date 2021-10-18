@@ -49,7 +49,9 @@ class Portfolio extends React.Component {
               ? moment(portfolio.endDate).format("MMMM YYYY")
               : "Still Working Here"}
           </p>
-          {JSON.stringify(portfolio.picturesUrl)}
+          {portfolio.picturesUrl.map((pic) => (
+            <img src={pic} alt="project pic" />
+          ))}
         </BasePage>
       </BaseLayout>
     );
