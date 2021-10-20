@@ -2,3 +2,4 @@
 /.next
 /server/.next
 /server/config/dev.js
+package-lock.json
