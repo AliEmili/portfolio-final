@@ -73,6 +73,7 @@ class PortfolioNew extends React.Component {
                 initialValues={INITIAL_VALUES}
                 error={error}
                 onSubmit={this.savePortfolio}
+                isNewPortfolio={true}
               />
             </Col>
           </Row>

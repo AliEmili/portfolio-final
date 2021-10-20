@@ -35,7 +35,12 @@ const validateInputs = (values) => {
 //   endDate: moment(new Date().getDate(),'DD/MM/YYYY')
 // };
 
-const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => {
+const PortfolioCreateForm = ({
+  initialValues,
+  onSubmit,
+  error,
+  isNewPortfolio,
+}) => {
   return (
     <div>
       <Formik
@@ -77,8 +82,9 @@ const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => {
             />
             <Field label="Start Date" name="startDate" component={PortDate} />
             <Field label="End Date" name="endDate" component={PortDate} />
-
-            <Field label="Files" name="picturesUrl" component={PortFiles} />
+            {isNewPortfolio && (
+              <Field label="Files" name="picturesUrl" component={PortFiles} />
+            )}
 
             <button type="submit" disabled={isSubmitting}>
               Create
