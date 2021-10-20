@@ -1,21 +1,23 @@
-@import './shared/colors';
-@import './shared/mixins';
+@import "./shared/colors";
+@import "./shared/mixins";
 
 // PAGES
-@import './index';
-@import './portfolios';
-@import './blogs';
-@import './about';
-@import './cv';
+@import "./index";
+@import "./portfolios";
+@import "./blogs";
+@import "./about";
+@import "./cv";
 
 // COMPONENTS
-@import './header';
-@import './slate-editor';
+@import "./header";
+@import "./slate-editor";
+@import "./custom-swiper";
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
-  font-family: 'Montserrat', 'Helvetica';
+  font-family: "Montserrat", "Helvetica";
 }
 
 .clickable {
@@ -54,18 +56,17 @@ html, body {
   }
 }
 
-
 // font
 
 @font-face {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(/static/icons.woff2) format('woff2');
+  src: url(/static/icons.woff2) format("woff2");
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -76,6 +77,6 @@ html, body {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }

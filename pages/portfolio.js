@@ -4,6 +4,10 @@ import BasePage from "../components/BasePage";
 import { withRouter } from "next/router";
 import { getPortfolioById } from "../actions";
 import moment from "moment";
+
+import Swiper from "react-id-swiper";
+import "swiper/css/swiper.css";
+
 class Portfolio extends React.Component {
   static async getInitialProps({ query }) {
     let portfolio = {};
@@ -16,6 +20,13 @@ class Portfolio extends React.Component {
 
     return { portfolio };
   }
+
+  swiper_params = {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  };
 
   render() {
     const { portfolio } = this.props;
@@ -49,9 +60,11 @@ class Portfolio extends React.Component {
               ? moment(portfolio.endDate).format("MMMM YYYY")
               : "Still Working Here"}
           </p>
-          {portfolio.picturesUrl.map((pic) => (
-            <img src={pic} alt="project pic" />
-          ))}
+          <Swiper {...this.swiper_params}>
+            {portfolio.picturesUrl.map((pic) => (
+              <img src={pic} alt="project pic" />
+            ))}
+          </Swiper>
         </BasePage>
       </BaseLayout>
     );
